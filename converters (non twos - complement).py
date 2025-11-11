@@ -23,15 +23,12 @@ def dec_to(value, base):
             x = x / base
     return biny
 
-def bin_to_dec(value):
+def to_dec(value, base):
     value = str(value)
     bits = len(value)
-    x = 2 ** (bits-1)
+    x = base ** (bits-1)
     deci = 0
     for bit in range(bits):
-        if value[bit] == "1":
-            deci += x
-            x = x / 2
-        else:
-            x = x / 2
+        deci += (x * int(value[bit]))
+        x /= base
     return int(deci)
